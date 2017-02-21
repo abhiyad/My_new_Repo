@@ -1,0 +1,11 @@
+22 *- CHEM + *- MTH
+23 *- CHEM + PHY
+24 *- PHY + *-ESC
+25 *-PHY + MTH
+26 MTH + ESC + PHY 
+27 *-CHEM
+28 CHEM
+01 PHY
+02 MTH
+03 ESC
+
