@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<string.h>
+
+int max(int a,int b)
+{
+    if(a>b)return a;
+    else return b;
+}
+int main()
+{int l=0;
+    int i=0,m,n,j;
+    int dp[100][100];
+    char x[100],y[100],z[100];
+    char ch=getchar();
+    while(ch!=' ')
+    {
+        x[i++]=ch;
+        ch=getchar();
+    }
+    i=0;
+    ch=getchar();
+    while(ch!=EOF)
+    {
+        y[i++]=ch;
+        ch=getchar();
+    }
+    m=strlen(x);
+    n=strlen(y);
+    for(i=0;i<=m;i++)
+    {
+        for(j=0;j<=n;j++)
+        {
+            if((i==0)||(j==0))dp[i][j]=0;
+            else if(x[i-1]==y[j-1])dp[i][j]=dp[i-1][j-1]+1;
+            else dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+        }
+    }
+//---- now you have actula dp matrix do something with
+i=m;
+for(j=n;j>0;j--)
+{
+    while(dp[i][j]!=max(dp[i-1][j-1],dp[i][j-1]))
+    {
+        i--;
+    }
+    z[l++]=x[i];
+    i--;
+}
+if(x[0]==y[0])
+z[l++]=x[0];
+for(i=l;i>=0;i--)
+printf("%c",z[i]);
+}
