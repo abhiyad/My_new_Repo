@@ -1,0 +1,12 @@
+sum' row =foldl (\acc x -> acc+x) 0 (filter (/=2) row)
+diag1sum state 0 n =(state!!0!!0)
+diag1sum state i n = (state!!i!!i) + diag1sum state (i-1) n
+diag2sum state 0 n = (state!!0!!(n-1))
+diag2sum state i n = (state !!i!!(n-1-i)) + diag2sum state (i-1) n
+
+main = do
+    str<-getLine
+    let n = read str :: Int
+    let l = replicate n ( replicate n 3)
+    let m=diag2sum l (n-1) n
+    print m
